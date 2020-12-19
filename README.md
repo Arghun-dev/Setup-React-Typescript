@@ -117,25 +117,65 @@ Integrate the prettier with eslint by adding a few more settings to the file
 
 ```js
 {
-  ...
-  "extends": [
-    ...
-    "plugin:prettier/recommended"
-  ],
-  ...
-  "plugins": [
-    ...
-    "prettier"
-  ],
-  "rules": {
-    ...
-    "prettier/prettier": "error",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "react/jsx-one-expression-per-line": "off",
-    "no-use-before-define":"off"
-
-   },
-  ...
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "react-hooks",
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "rules": {
+        "linebreak-style": 0,
+        "prettier/prettier": ["error", {
+          "endOfLine":"auto",
+          "linebreak-style": "never"
+        }],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "no-use-before-define":"off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "object-curly-newline": "off",
+        "react/jsx-filename-extension": [
+          1,
+          {
+            "extensions": [
+              ".tsx"
+            ]
+          }
+        ],
+        "import/prefer-default-export": "off",
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+            "ts": "never",
+            "tsx": "never"
+          }
+        ]
+    },
+    "settings": {
+        "import/resolver": {
+            "typescript": {}
+        }
+    }
 }
 ```
 
